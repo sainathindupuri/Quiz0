@@ -19,6 +19,15 @@ datasetPath = './people.csv'
 def Hello():
     return render_template('index.html')
 
+
+
+@app.route('/ShowAllRecords')
+def showAllRecords():
+    cursor = connection.cursor()
+    cursor.execute("Select * from data")
+    data = cursor.fetchall()
+    link = "https://adbimages.blob.core.windows.net/assignment1/"
+    return render_template('ShowAllRecords.html',data=data, link=link)
 if __name__ == '__main__':    
     app.run()
 
