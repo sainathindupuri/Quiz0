@@ -31,7 +31,7 @@ def showAllRecords():
 
 
 @app.route('/ShowDetails')
-def showAllRecords():
+def showDetails():
     cursor = connection.cursor()
     cursor.execute("Select * from data")
     data = cursor.fetchall()
