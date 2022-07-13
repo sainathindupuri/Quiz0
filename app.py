@@ -30,13 +30,14 @@ def showAllRecords():
     return render_template('ShowAllRecords.html',data=data, link=link)
 
 
-@app.route('/ShowDetails')
+@app.route('/ShowDetails', methods=['GET', 'POST'])
 def showDetails():
-    cursor = connection.cursor()
-    cursor.execute("Select * from data")
+    cursor = connection.cursor()    
+    classNumber = int(request.form.get("ClassNumber"))    
+    cursor.execute("select * from dbo.data where class ={}".format(classNumber))
     data = cursor.fetchall()
     link = "https://adbimages.blob.core.windows.net/assignment1/"
-    return render_template('ShowAllRecords.html',data=data, link=link)
+    return render_template('ShowDetails.html', data = data, link = link)    
 
 
 if __name__ == '__main__':    
