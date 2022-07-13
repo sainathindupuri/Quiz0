@@ -19,9 +19,6 @@ datasetPath = './people.csv'
 def Hello():
     return render_template('index.html')
 
-if __name__ == '__main__':
- 
-    # run() method of Flask class runs the application
-    
+if __name__ == '__main__':    
     app.run()
 
